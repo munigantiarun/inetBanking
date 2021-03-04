@@ -10,13 +10,14 @@ public class LoginPage {
 	
 	WebDriver ldriver;
 	
+	 //below we made it public, because we are using it out of package, i.e, in TCs
 	public LoginPage(WebDriver rdriver)
 	{
 		ldriver = rdriver;
 		PageFactory.initElements(rdriver, this);
 	}
 	
-	
+	   
 	@FindBy(name="uid")
 	@CacheLookup
 	WebElement txtUserName;
@@ -28,7 +29,7 @@ public class LoginPage {
 	@FindBy(name = "btnLogin")
 	@CacheLookup
 	WebElement btnLogin; 
-	
+	   
 	
 //	Action methods for three different elements
 	

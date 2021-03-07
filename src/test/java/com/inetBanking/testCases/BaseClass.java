@@ -7,19 +7,24 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import com.inetBanking.utilities.ReadConfig;
+
 public class BaseClass {
 	
+	ReadConfig readconfig = new ReadConfig();
+
 //	These are common for every testcase. so we define the variables below
-	public String baseURL = "http://www.demo.guru99.com/v4/index.php";
-	public String username = "mngr311219";
-	public String password = "apAzymU";
+	public String baseURL = readconfig.getApplicationURL();
+	public String username = readconfig.getUsername();
+	public String password = readconfig.getPassword();
+	
 	public static WebDriver driver;
 	
 	public static Logger logger;
 	@BeforeClass
 	public void setup()
 	{
-		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//Drivers//chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", readconfig.getChromePath());
 		driver = new ChromeDriver();
 		
 		logger = Logger.getLogger("ebanking");
